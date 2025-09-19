@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 기반 모의 면접 프로그램</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="video-section">
+            <div id="countdown"></div>
+            <div class="header-info">
+                <h1 id="programTitle">AI 기반 모의 면접 프로그램</h1>
+                <p id="usageGuide">
+                    학과/질문 선택 후 '녹화' 버튼을 눌러 답변하고, 답변을 종료하면 '녹화' 버튼을 한 번 더 누르세요.
+                </p>
+            </div>
+            <div class="video-container">
+                <video id="webcam" autoplay playsinline></video>
+                <p id="timer">00:00</p>
+            </div>
+            <div class="controls">
+                <div class="control-item"><button id="flipBtn" title="좌우 반전">🔄</button><span>반전</span></div>
+                <div class="control-item"><button id="pauseBtn" title="일시 정지">⏸️</button><span>정지</span></div>
+                <div class="control-item"><button id="recordBtn" title="녹화 시작">녹화</button></div>
+                <div class="control-item"><button id="saveBtn" title="영상 저장" disabled>💾</button><span>저장</span></div>
+            </div>
+        </div>
+        <div class="info-section">
+            <div class="input-group"><h3>1. 희망 학과</h3><input type="text" id="department" placeholder="예) 인공지능학과"></div>
+            <div class="input-group">
+                <h3>2. 면접 질문</h3>
+                <select id="questionSelect">
+                    <option value="자기소개 및 지원동기">가. 자기소개 및 지원동기</option>
+                    <option value="자신의 성격의 장점과 단점">나. 자신의 성격의 장점과 단점</option>
+                    <option value="자신이 지원한 학과와 관련하여 가장 기억에 남는 활동과 이유">다. 지원 학과 관련 가장 기억에 남는 활동</option>
+                    <option value="우리 학교에 입학한 후 구체적인 학업 계획">라. 입학 후 구체적인 학업 계획</option>
+                    <option value="마지막으로 하고 싶은 말">마. 마지막으로 하고 싶은 말</option>
+                    <option value="custom">바. (직접 입력)</option>
+                </select>
+                <input type="text" id="customQuestion" placeholder="면접 질문을 직접 입력하세요." style="display: none;">
+            </div>
+            <div class="output-group">
+                <h3>3. 실시간 답변 내용</h3>
+                <div id="transcriptBox" class="output-box">음성 인식이 여기에 표시됩니다...</div>
+            </div>
+            <div class="output-group">
+                <h3>4. 🤖 AI 종합 피드백 및 꼬리 질문</h3>
+                <div id="aiResultBox" class="output-box">답변을 마치면 이곳에서 AI의 분석 결과를 확인할 수 있어요.</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
